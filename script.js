@@ -20,8 +20,17 @@ function init() {
 
     canvas.addEventListener('touchmove', function (e) {
         console.log("touch");
-        alert("touch");
         findxy('move', e);
+    });
+
+    canvas.addEventListener('touchstart', function (e) {
+        console.log("touch start");
+        findxy('down', e);
+    });
+
+    canvas.addEventListener('touchend', function (e) {
+        console.log("touch end");
+        findxy('down', e);
     });
 
     canvas.addEventListener("mousemove", function (e) {
