@@ -20,17 +20,17 @@ function init() {
 
     canvas.addEventListener('touchmove', function (e) {
         console.log("touch");
-        findxy('move', e);
+        findxy('move', e, true);
     });
 
     canvas.addEventListener('touchstart', function (e) {
         console.log("touch start");
-        findxy('down', e);
+        findxy('down', e, true);
     });
 
     canvas.addEventListener('touchend', function (e) {
         console.log("touch end");
-        findxy('down', e);
+        findxy('down', e, true);
     });
 
     canvas.addEventListener("mousemove", function (e) {
@@ -78,7 +78,7 @@ function color(obj) {
 
 function draw() {
     ctx.beginPath();
-    
+
     const px = prevX + window.scrollX;
     const py = prevY + window.scrollY;
 
@@ -108,12 +108,17 @@ function save() {
     document.getElementById("canvasimg").style.display = "inline";
 }
 
-function findxy(res, e) {
+function findxy(res, e, isTouch = false) {
     if (res == 'down') {
         prevX = currX;
         prevY = currY;
-        currX = e.clientX - canvas.offsetLeft;
-        currY = e.clientY - canvas.offsetTop;
+        if (isTouch) {
+            currX = e.touches[0].pageX - canvas.offsetLeft;
+            currY = e.touches[0].pageY - canvas.offsetTop;
+        } else {
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+        }
 
         flag = true;
         dot_flag = true;
@@ -132,8 +137,13 @@ function findxy(res, e) {
         if (flag) {
             prevX = currX;
             prevY = currY;
-            currX = e.clientX - canvas.offsetLeft;
-            currY = e.clientY - canvas.offsetTop;
+            if (isTouch) {
+                currX = e.touches[0].pageX - canvas.offsetLeft;
+                currY = e.touches[0].pageY - canvas.offsetTop;
+            } else {
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+            }
             draw();
         }
     }
