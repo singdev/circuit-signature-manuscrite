@@ -18,6 +18,12 @@ function init() {
     w = canvas.width;
     h = canvas.height;
 
+    canvas.addEventListener('touchmove', function (e) {
+        console.log("touch");
+        alert("touch");
+        findxy('move', e);
+    });
+
     canvas.addEventListener("mousemove", function (e) {
         findxy('move', e)
     }, false);
