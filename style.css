@@ -5,6 +5,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+	overflow: hidden;
+}
+
 .upload-container {
     display: flex;
     flex-direction: column;
@@ -85,35 +89,32 @@ label:hover {
 .main-content {
 	display: flex;
 	flex-direction: column;
-	margin-top: 4rem;
+	padding-top: 4rem;
 	align-items: center;
 	width: 100vw;
-	padding: 2rem;
 }
 
 #pdf-meta {
 	overflow: hidden;
-	margin: 0 0 20px 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 	position: sticky;
 	top: 5rem;
 	left: 0rem;
 }
 
 #pdf-meta button {
-	padding: 0.5rem 1rem;
-	font-weight: 400;
+	padding: 0.5rem 0.5rem;
 	background-color: rgb(252, 252, 252);
 	color: darkcyan;
 	border: none;
 	margin: 0.5rem;
-	width: 150px;
 	border-radius: 4px;
+	font-size: 1.2em;
 }
 
 #pdf-meta button:hover {
@@ -122,12 +123,12 @@ label:hover {
 }
 
 #pdf-meta a {
-	padding: 0.5rem 1rem;
-	font-weight: 400;
+	padding: 0.5rem 0.5rem;
 	background-color: rgb(252, 252, 252);
 	color: darkcyan;
 	border: none;
 	text-decoration: none;
+	font-size: 1.2em;
 }
 
 #page-count-container {
@@ -136,15 +137,33 @@ label:hover {
 	gap: 0.2rem;
 	color: darkblue;
 	font-weight: 400;
-	background-color: white;
 	padding: 1rem;
+	width: fit-content;
+	font-size: 14px;
 }
 
 #pdf-canvas {
 	border: 1px solid rgba(0,0,0,0.2);
 	box-sizing: border-box;
 	width: 1024px;
-	max-width: 97%;
+	max-width: 1024px;
+	min-width: 1024px;
+}
+
+#canvas-container {
+	width: 1024px;
+	max-width: 95%;
+	height: 80vh;
+	margin: 1rem;
+	border: 2px solid darkcyan;
+}
+
+.no-scroll {
+	overflow: scroll;
+}
+
+.can-scroll {
+	overflow: hidden;
 }
 
 #page-loader {

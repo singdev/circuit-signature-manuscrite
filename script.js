@@ -1,5 +1,14 @@
 window.addEventListener("load", () => {
     init();
+    document.getElementById("scroll-action").addEventListener("click", () => {
+        const element = document.getElementById("canvas-container");
+        element.classList.toggle("can-scroll");
+        if(element.classList.contains("can-scroll")){
+            document.getElementById("scroll-action").innerHTML = 'Scroll';
+        } else {
+            document.getElementById("scroll-action").innerHTML = 'No Scroll';
+        }
+    });
 })
 
 var canvas, ctx, flag = false,
@@ -79,13 +88,18 @@ function color(obj) {
 function draw() {
     ctx.beginPath();
 
-    const px = prevX + window.scrollX;
-    const py = prevY + window.scrollY;
 
-    const cx = currX + window.scrollX;
-    const cy = currY + window.scrollY;
 
-    console.log(cx + " " + cy);
+    const container = document.getElementById("canvas-container");
+
+    console.log(container.scrollTop + " " + container.scrollLeft);
+
+    const px = prevX  + window.scrollX + container.scrollLeft;
+    const py = prevY  + window.scrollY + container.scrollTop;
+
+    const cx = currX  + window.scrollX + container.scrollLeft;
+    const cy = currY  + window.scrollY + container.scrollTop;
+
 
     ctx.moveTo(px, py);
     ctx.lineTo(cx, cy);

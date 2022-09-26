@@ -30,7 +30,10 @@
     <header>
         <div class="title">
             <img src="./assets/circuit2.png" alt="LOGO" class="logo">
-            CSMEL
+            eParapheur
+        </div>
+        <div>
+            <button id="scroll-action">Scroll</button>
         </div>
     </header>
     <main>
@@ -40,25 +43,27 @@
                 <div class="main-content">
                     <div id="pdf-meta">
                         <div id="pdf-buttons">
-                            <button id="pdf-prev"><i class="fa-solid fa-caret-left"></i> Precedent</button>
-                            <button id="pdf-next">Suivant <i class="fa-solid fa-caret-right"></i></button>
+                            <button id="pdf-prev"><i class="fa-solid fa-caret-left"></i></button>
+                            <button id="pdf-next"><i class="fa-solid fa-caret-right"></i></button>
                         </div>
-                        <div id="page-count-container">Page <div id="pdf-current-page"></div> sur <div
+                        <div id="page-count-container"><div id="pdf-current-page"></div> sur <div
                                 id="pdf-total-pages">
                             </div>
                         </div>
                         <div>
-                            <a id="download-image" href="#">Telecharger la page</a>
+                            <a id="download-image" href="#" style="max-width: 2rem; margin-right: 1rem;"><i class="fa-solid fa-download"></i></a>
                         </div>
                     </div>
-                    <canvas id="pdf-canvas" width="1024"></canvas>
+                    <div id="canvas-container" class="no-scroll">
+                        <canvas id="pdf-canvas" width="1024"></canvas>
+                    </div>
                     <div id="page-loader">Chargement de la page ...</div>
                 </div>
             </div>
         </div>
         <div class="upload-container">
             <div id="welcome">
-                <h1>Bienvenue sur CSMEL</h1>
+                <h1>Bienvenue sur eParapheur</h1>
                 <h2>by Circuit</h2>
                 <h3>Signature manuscrite de document electronique en ligne</h3>
             </div>
