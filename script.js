@@ -85,6 +85,8 @@ function draw() {
     const cx = currX + window.scrollX;
     const cy = currY + window.scrollY;
 
+    console.log(cx + " " + cy);
+
     ctx.moveTo(px, py);
     ctx.lineTo(cx, cy);
     ctx.strokeStyle = x;
