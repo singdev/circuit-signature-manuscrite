@@ -11,6 +11,27 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
+	margin-top: 10rem;
+}
+
+.upload-container h1 {
+	font-size: 3.0em;
+	color: darkblue;
+	text-align: center;
+}
+
+.upload-container h2 {
+	font-weight: 50;
+	padding-top: 0rem;
+	padding-bottom: 2rem;
+	text-align: center;
+}
+
+.upload-container h3 {
+	margin-bottom: 4rem;
+	text-transform: uppercase;
+	color: darkcyan;
+	text-align: center;
 }
 
 .upload-container  input{
@@ -22,15 +43,20 @@
     flex-direction: column;
     gap: 1rem;
     font-size: 2.0em;
-    color: #444;
+    color: darkcyan;
     align-items: center;
     justify-content: center;
     transition: 0.4s;
+	border: 1px dashed darkcyan;
+	padding: 1rem;
+	border-radius: 4px;
+	font-weight: bold;
 }
 
 label:hover {
     cursor: pointer;
-    color: darkblue;
+    background-color: darkcyan;
+	color: white;
 }
 
 .upload-container label span {
@@ -40,11 +66,6 @@ label:hover {
 
 #file-to-upload {
 	display: none;
-}
-
-#pdf-main-container {
-	width: 400px;
-	margin: 20px auto;
 }
 
 #pdf-loader {
@@ -58,32 +79,72 @@ label:hover {
 
 #pdf-contents {
 	display: none;
+	width: 100vw;
+}
+
+.main-content {
+	display: flex;
+	flex-direction: column;
+	margin-top: 4rem;
+	align-items: center;
+	width: 100vw;
+	padding: 2rem;
 }
 
 #pdf-meta {
 	overflow: hidden;
 	margin: 0 0 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	position: sticky;
+	top: 5rem;
+	left: 0rem;
 }
 
-#pdf-buttons {
-	float: left;
+#pdf-meta button {
+	padding: 0.5rem 1rem;
+	font-weight: 400;
+	background-color: rgb(252, 252, 252);
+	color: darkcyan;
+	border: none;
+	margin: 0.5rem;
+	width: 150px;
+	border-radius: 4px;
+}
+
+#pdf-meta button:hover {
+	cursor: pointer;
+	color: darkblue;
+}
+
+#pdf-meta a {
+	padding: 0.5rem 1rem;
+	font-weight: 400;
+	background-color: rgb(252, 252, 252);
+	color: darkcyan;
+	border: none;
+	text-decoration: none;
 }
 
 #page-count-container {
-	float: right;
-}
-
-#pdf-current-page {
-	display: inline;
-}
-
-#pdf-total-pages {
-	display: inline;
+	display: flex;
+	flex-direction: row;
+	gap: 0.2rem;
+	color: darkblue;
+	font-weight: 400;
+	background-color: white;
+	padding: 1rem;
 }
 
 #pdf-canvas {
 	border: 1px solid rgba(0,0,0,0.2);
 	box-sizing: border-box;
+	width: 1024px;
+	max-width: 97%;
 }
 
 #page-loader {
