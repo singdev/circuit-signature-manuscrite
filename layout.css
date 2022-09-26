@@ -14,14 +14,13 @@ header {
 }
 
 .title {
-    color: white;
     display: flex;
     flex-direction: row;
     gap: 1rem;
     align-items: center;
     font-size: 2.0em;
     font-weight: bold;
-    color: #323232;
+    color: #777;
 }
 
 header .logo {
