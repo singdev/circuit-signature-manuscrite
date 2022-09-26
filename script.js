@@ -1,12 +1,15 @@
+var scrollAcion = null;
+
 window.addEventListener("load", () => {
     init();
     document.getElementById("scroll-action").addEventListener("click", () => {
         const element = document.getElementById("canvas-container");
         element.classList.toggle("can-scroll");
-        if(element.classList.contains("can-scroll")){
-            document.getElementById("scroll-action").innerHTML = 'Scroll';
+        scrollAcion = document.getElementById("scroll-action");
+        if (element.classList.contains("can-scroll")) {
+            scrollAcion.innerHTML = 'Signe';
         } else {
-            document.getElementById("scroll-action").innerHTML = 'No Scroll';
+            scrollAcion.innerHTML = 'Scroll';
         }
     });
 })
@@ -28,30 +31,48 @@ function init() {
     h = canvas.height;
 
     canvas.addEventListener('touchmove', function (e) {
-        console.log("touch");
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('move', e, true);
     });
 
     canvas.addEventListener('touchstart', function (e) {
-        console.log("touch start");
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('down', e, true);
     });
 
     canvas.addEventListener('touchend', function (e) {
-        console.log("touch end");
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('down', e, true);
     });
 
     canvas.addEventListener("mousemove", function (e) {
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('move', e)
     }, false);
     canvas.addEventListener("mousedown", function (e) {
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('down', e)
     }, false);
     canvas.addEventListener("mouseup", function (e) {
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('up', e)
     }, false);
     canvas.addEventListener("mouseout", function (e) {
+        if (scrollAcion.innerHTML != "Signe") {
+            return;
+        }
         findxy('out', e)
     }, false);
 }
@@ -94,11 +115,11 @@ function draw() {
 
     console.log(container.scrollTop + " " + container.scrollLeft);
 
-    const px = prevX  + window.scrollX + container.scrollLeft;
-    const py = prevY  + window.scrollY + container.scrollTop;
+    const px = prevX + window.scrollX + container.scrollLeft;
+    const py = prevY + window.scrollY + container.scrollTop;
 
-    const cx = currX  + window.scrollX + container.scrollLeft;
-    const cy = currY  + window.scrollY + container.scrollTop;
+    const cx = currX + window.scrollX + container.scrollLeft;
+    const cy = currY + window.scrollY + container.scrollTop;
 
 
     ctx.moveTo(px, py);
