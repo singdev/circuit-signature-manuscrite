@@ -19,6 +19,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="pdf.js"></script>
     <script src="pdf.worker.js"></script>
+
+    <script src="./jspdf.min.js"></script>
+
     <script src="script.js"></script>
 
     <link rel="stylesheet" href="style.css">
@@ -32,7 +35,7 @@
             <img src="./assets/circuit2.png" alt="LOGO" class="logo">
             eParapheur
         </div>
-        <div>
+        <div class="flex-row">
             <button id="scroll-action">Scroll</button>
         </div>
     </header>
@@ -46,12 +49,13 @@
                             <button id="pdf-prev"><i class="fa-solid fa-caret-left"></i></button>
                             <button id="pdf-next"><i class="fa-solid fa-caret-right"></i></button>
                         </div>
-                        <div id="page-count-container"><div id="pdf-current-page"></div> sur <div
-                                id="pdf-total-pages">
+                        <div id="page-count-container">
+                            <div id="pdf-current-page"></div> sur <div id="pdf-total-pages">
                             </div>
                         </div>
-                        <div>
-                            <a id="download-image" href="#" style="max-width: 2rem; margin-right: 1rem;"><i class="fa-solid fa-download"></i></a>
+                        <div class="flex-row">
+                            <a id="clear" href="#"><i class="fa-solid fa-rotate-right"></i></a>
+                            <a id="save-all" href="#"><i class="fa-solid fa-file-pdf"></i></a>
                         </div>
                     </div>
                     <div id="canvas-container" class="no-scroll">
@@ -77,6 +81,8 @@
 
     <script>
 
+        var images = [];
+
         var __PDF_DOC,
             __CURRENT_PAGE,
             __TOTAL_PAGES,
@@ -90,7 +96,9 @@
             PDFJS.getDocument({ url: pdf_url }).then(function (pdf_doc) {
                 __PDF_DOC = pdf_doc;
                 __TOTAL_PAGES = __PDF_DOC.numPages;
-
+                for (let i = 0; i < __TOTAL_PAGES; i++) {
+                    images.push("-1");
+                }
                 // Hide the pdf loader and show pdf container in HTML
                 $("#pdf-loader").hide();
                 $("#pdf-contents").show();
@@ -111,7 +119,6 @@
         function showPage(page_no) {
             __PAGE_RENDERING_IN_PROGRESS = 1;
             __CURRENT_PAGE = page_no;
-
             // Disable Prev & Next buttons while page is being loaded
             $("#pdf-next, #pdf-prev").attr('disabled', 'disabled');
 
@@ -154,6 +161,22 @@
             });
         }
 
+        $("#save-all").on('click', function () {
+            images[__CURRENT_PAGE - 1] = __CANVAS.toDataURL();
+
+            // You'll need to make your image into a Data URL
+            // Use http://dataurl.net/#dataurlmaker
+            var doc = new jsPDF("p", "mm", "a4");
+
+            for (let i = 0; i < images.length; i++) {
+                if (images[i] != "-1") {
+                    doc.addImage(images[i], 'PNG', 0, 0, 210, 300);
+                    doc.addPage();
+                }
+            }
+            doc.save('web.pdf');
+        });
+
         // Upon click this should should trigger click on the #file-to-upload file input element
         // This is better than showing the not-good-looking file input element
         $("#upload-button").on('click', function () {
@@ -176,14 +199,24 @@
 
         // Previous page of the PDF
         $("#pdf-prev").on('click', function () {
-            if (__CURRENT_PAGE != 1)
+            if (__CURRENT_PAGE != 1) {
+                images[__CURRENT_PAGE - 1] = document.getElementById("pdf-canvas").toDataURL();
                 showPage(--__CURRENT_PAGE);
+            }
+        });
+
+
+        // Next page of the PDF
+        $("#clear").on('click', function () {
+            showPage(__CURRENT_PAGE);
         });
 
         // Next page of the PDF
         $("#pdf-next").on('click', function () {
-            if (__CURRENT_PAGE != __TOTAL_PAGES)
+            if (__CURRENT_PAGE != __TOTAL_PAGES) {
+                images[__CURRENT_PAGE - 1] = document.getElementById("pdf-canvas").toDataURL();
                 showPage(++__CURRENT_PAGE);
+            }
         });
 
         // Download button
