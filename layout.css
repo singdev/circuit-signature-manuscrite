@@ -29,23 +29,23 @@ header {
     width: 16px;
     height: 16px;
     border-radius: 4px;
-    background-color: #000;
+    color: #000;
 }
 
 #pen-red {
-    background-color: red;
+    color: red;
 }
 
 #pen-green {
-    background-color: green;
+    color: green;
 }
 
 #pen-blue {
-    background-color: blue;
+    color: blue;
 }
 
 #pen-black {
-    background-color: black;
+    color: black;
 }
 
 .pen:hover {

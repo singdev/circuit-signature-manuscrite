@@ -31,10 +31,18 @@
 
 <body>
     <div class="color-container">
-        <div class="pen" id="pen-red"></div>
-        <div class="pen" id="pen-green"></div>
-        <div class="pen" id="pen-blue"></div>
-        <div class="pen" id="pen-black"></div>
+        <div class="pen" id="pen-red">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+        <div class="pen" id="pen-green">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+        <div class="pen" id="pen-blue">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+        <div class="pen" id="pen-black">
+            <i class="fa-solid fa-pen"></i>
+        </div>
     </div>
     <header>
         <div class="title">
@@ -180,7 +188,7 @@
                     doc.addPage();
                 }
             }
-            doc.save('web.pdf');
+            doc.save('document_eparapheur.pdf');
         });
 
         // Upon click this should should trigger click on the #file-to-upload file input element
