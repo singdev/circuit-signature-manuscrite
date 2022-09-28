@@ -12,6 +12,22 @@ window.addEventListener("load", () => {
             scrollAcion.innerHTML = 'Scroll';
         }
     });
+
+    document.getElementById("pen-black").addEventListener("click", () => {
+        ctx.strokeStyle = "#000000";
+    })
+
+    document.getElementById("pen-blue").addEventListener("click", () => {
+        ctx.strokeStyle = "blue";
+    })
+
+    document.getElementById("pen-red").addEventListener("click", () => {
+        ctx.strokeStyle = "red";
+    })
+
+    document.getElementById("pen-green").addEventListener("click", () => {
+        ctx.strokeStyle = "green";
+    })
 })
 
 var canvas, ctx, flag = false,
@@ -113,8 +129,6 @@ function draw() {
 
     const container = document.getElementById("canvas-container");
 
-    console.log(container.scrollTop + " " + container.scrollLeft);
-
     const px = prevX + window.scrollX + container.scrollLeft;
     const py = prevY + window.scrollY + container.scrollTop;
 
@@ -124,7 +138,7 @@ function draw() {
 
     ctx.moveTo(px, py);
     ctx.lineTo(cx, cy);
-    ctx.strokeStyle = x;
+   // ctx.strokeStyle = x;
     ctx.lineWidth = y;
     ctx.stroke();
     ctx.closePath();

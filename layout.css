@@ -15,6 +15,43 @@ header {
     max-height: 4rem;
 }
 
+.color-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.pen {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background-color: #000;
+}
+
+#pen-red {
+    background-color: red;
+}
+
+#pen-green {
+    background-color: green;
+}
+
+#pen-blue {
+    background-color: blue;
+}
+
+#pen-black {
+    background-color: black;
+}
+
+.pen:hover {
+    cursor: pointer;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;
